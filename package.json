@@ -17,7 +17,8 @@
     "compile": "tsc",
     "dev": "ts-node-dev --respawn ./src/index.ts",
     "start": "npm run compile && nodemon ./dist/index.js",
-    "test": "jest"
+    "test": "jest",
+    "generate": "graphql-codegen"
   },
   "dependencies": {
     "@apollo/datasource-rest": "^6.2.2",
