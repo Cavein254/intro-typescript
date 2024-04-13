@@ -1,5 +1,4 @@
-import { PlaylistModel } from "../models";
-import { Playlist } from "../types";
+import { PlaylistModel, SnapshotOrError } from "../models";
 import { RESTDataSource } from "@apollo/datasource-rest";
 
 export class SpotifyAPI extends RESTDataSource {
@@ -15,7 +14,10 @@ export class SpotifyAPI extends RESTDataSource {
     return this.get(`playlists/${playlistId}`);
   }
 
-  addItemsToPlaylist(input: { playlistId: string; uris: string[] }) {
+  addItemsToPlaylist(input: {
+    playlistId: string;
+    uris: string[];
+  }): Promise<SnapshotOrError> {
     const { playlistId, uris } = input;
     return this.post(`playlists/${playlistId}/tracks`, {
       params: {
